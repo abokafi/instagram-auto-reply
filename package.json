@@ -1,0 +1,25 @@
+{
+  "name": "instagram-auto-reply-system",
+  "version": "1.0.0",
+  "description": "نظام أتمتة الرد التلقائي على تعليقات انستغرام والرسائل الخاصة",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "instagram",
+    "automation",
+    "bot",
+    "meta-graph-api",
+    "auto-reply",
+    "dm-reply"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "settings": {
+    "instagramAccountId": "1616828123438171",
+    "pageAccessToken": "IGAAWZBfyH13FtBZAGJEaTh4R1pRaDlLd2ZA5NXZAxLU01clJkdXI5QlcyVm9VRkNHNGdxUnJ1Y1BOQWtueTAwV0JxQVFOakZAMU2FsdURjVGNOdVhXQ0lPZAmpPbDI1ZAHNaNmdGcXUyblNUOFlHemtGTndRcFpnRk00dVhFYTJnOGFEcwZDZD",
+    "webhookVerifyToken": "my_custom_secret_verify_token_123",
+    "autoLikeEnabled": true,
+    "randomizeDelay": true,
+    "minDelaySeconds": 2,
+    "maxDelaySeconds": 5,
+    "metaApiVersion": "v19.0"
+  },
+  "rules": [
+    {
+      "id": "rule_default_price",
+      "name": "استفسار عن السعر",
+      "keywords": [
+        "سعر",
+        "بكم",
+        "السعر",
+        "بكم هذا",
+        "كم سعر",
+        "cost",
+        "price"
+      ],
+      "matchType": "contains",
+      "autoLike": true,
+      "publicReplies": [
+        "أهلاً بك! 🌸 تم إرسال جميع التفاصيل والسعر في الخاص 📩",
+        "مرحباً عزيزي! أرسلنا لك السعر ورابط الطلب في الرسائل الخاصة 📥",
+        "تفضل بتفقد رسائلك الخاصة (DM) للحصول على كامل التفاصيل 📨"
+      ],
+      "dmReply": {
+        "text": "أهلاً وسهلاً بك 🌸! سعر هذا المنتج 150 ريال شامل الضريبة 💸.\nيمكنك الطلب مباشرة من الرابط التالي:",
+        "buttonText": "🛒 رابط الطلب المباشر",
+        "buttonUrl": "https://example.com/checkout"
+      },
+      "active": true,
+      "triggerCount": 16
+    },
+    {
+      "id": "rule_default_shipping",
+      "name": "استفسار عن الشحن والتوصيل",
+      "keywords": [
+        "شحن",
+        "توصيل",
+        "يوصل",
+        "متى يوصل",
+        "الدفع عند الاستلام"
+      ],
+      "matchType": "contains",
+      "autoLike": true,
+      "publicReplies": [
+        "مرحباً! نوصل لجميع مناطق المملكة ودول الخليج 🚚 تم مراسلتك بالخاص!",
+        "أهلاً بك! تفاصيل مدة الشحن وأسعار التوصيل وصلت في خاص حسابك 📩"
+      ],
+      "dmReply": {
+        "text": "مرحباً بك! 🚚 التوصيل داخل الرياض خلال 24 ساعة باقي المدن خلال 2-4 أيام عمل. الشحن مجاني للطلبات فوق 200 ريال!",
+        "buttonText": "📦 تتبع الشحنة",
+        "buttonUrl": "https://example.com/shipping"
+      },
+      "active": true,
+      "triggerCount": 8
+    },
+    {
+      "id": "rule_default_details",
+      "name": "طلب تفاصيل عامة",
+      "keywords": [
+        "تفاصيل",
+        "ممكن تفاصيل",
+        "شرح",
+        "معلومات",
+        "info"
+      ],
+      "matchType": "contains",
+      "autoLike": true,
+      "publicReplies": [
+        "تم التواصل معك في الخاص وتزويدك بكافة التفاصيل والمعلومات 📩✨",
+        "أهلاً بك 🌸 تفقد الرسائل الخاصة للحصول على الدليل الكامل والكتالوج 📥"
+      ],
+      "dmReply": {
+        "text": "أهلاً بك! يسعدنا اهتمامك 🌟. إليك الكتالوج الكامل والخصم الخاص لمتابعينا 🎁",
+        "buttonText": "📄 عرض الكتالوج",
+        "buttonUrl": "https://example.com/catalog"
+      },
+      "active": true,
+      "triggerCount": 22
+    }
+  ],
+  "logs": [
+    {
+      "username": "ahmed_vip",
+      "commentId": "sim_1787571356950",
+      "commentText": "ال",
+      "ruleMatched": "لا توجد قاعدة مطابقة",
+      "autoLikeStatus": "skipped",
+      "publicReplyStatus": "skipped",
+      "dmStatus": "skipped",
+      "simulated": true,
+      "id": "log_1787571356951_8oew",
+      "timestamp": "2026-08-24T11:35:56.951Z"
+    },
+    {
+      "username": "sarah_test",
+      "commentId": "sim_1787570888988",
+      "commentText": "عروض",
+      "ruleMatched": "لا توجد قاعدة مطابقة",
+      "autoLikeStatus": "skipped",
+      "publicReplyStatus": "skipped",
+      "dmStatus": "skipped",
+      "simulated": true,
+      "id": "log_1787570888991_rcuq",
+      "timestamp": "2026-08-24T11:28:08.991Z"
+    },
+    {
+      "username": "ali_test",
+      "commentId": "sim_1787570888957",
+      "commentText": "منور ورائع جدا 👍",
+      "ruleMatched": "لا توجد قاعدة مطابقة",
+      "autoLikeStatus": "skipped",
+      "publicReplyStatus": "skipped",
+      "dmStatus": "skipped",
+      "simulated": true,
+      "id": "log_1787570888960_4czn",
+      "timestamp": "2026-08-24T11:28:08.960Z"
+    },
+    {
+      "username": "sarah_test",
+      "commentId": "sim_1787570731730",
+      "commentText": "عروض",
+      "ruleMatched": "لا توجد قاعدة مطابقة",
+      "autoLikeStatus": "skipped",
+      "publicReplyStatus": "skipped",
+      "dmStatus": "skipped",
+      "simulated": true,
+      "id": "log_1787570731734_vdsz",
+      "timestamp": "2026-08-24T11:25:31.734Z"
+    },
+    {
+      "username": "ali_test",
+      "commentId": "sim_1787570731702",
+      "commentText": "منور ورائع جدا 👍",
+      "ruleMatched": "لا توجد قاعدة مطابقة",
+      "autoLikeStatus": "skipped",
+      "publicReplyStatus": "skipped",
+      "dmStatus": "skipped",
+      "simulated": true,
+      "id": "log_1787570731704_e8hy",
+      "timestamp": "2026-08-24T11:25:31.704Z"
+    },
+    {
+      "username": "khalid_test",
+      "commentId": "sim_1787564590597",
+      "commentText": "كم السعر بالريال؟",
+      "ruleMatched": "استفسار عن السعر",
+      "autoLikeStatus": "success",
+      "publicReplyText": "تفضل بتفقد رسائلك الخاصة (DM) للحصول على كامل التفاصيل 📨",
+      "publicReplyStatus": "success",
+      "dmStatus": "success",
+      "dmText": "أهلاً وسهلاً بك 🌸! سعر هذا المنتج 150 ريال شامل الضريبة 💸.\nيمكنك الطلب مباشرة من الرابط التالي:",
+      "buttonText": "🛒 رابط الطلب المباشر",
+      "buttonUrl": "https://example.com/checkout",
+      "simulated": true,
+      "id": "log_1787564590606_ykfo",
+      "timestamp": "2026-08-24T09:43:10.606Z"
+    },
+    {
+      "username": "khalid_test",
+      "commentId": "sim_1787564582269",
+      "commentText": "كم السعر بالريال؟",
+      "ruleMatched": "استفسار عن السعر",
+      "autoLikeStatus": "success",
+      "publicReplyText": "مرحباً عزيزي! أرسلنا لك السعر ورابط الطلب في الرسائل الخاصة 📥",
+      "publicReplyStatus": "success",
+      "dmStatus": "success",
+      "dmText": "أهلاً وسهلاً بك 🌸! سعر هذا المنتج 150 ريال شامل الضريبة 💸.\nيمكنك الطلب مباشرة من الرابط التالي:",
+      "buttonText": "🛒 رابط الطلب المباشر",
+      "buttonUrl": "https://example.com/checkout",
+      "simulated": true,
+      "id": "log_1787564582294_b8oz",
+      "timestamp": "2026-08-24T09:43:02.294Z"
+    },
+    {
+      "id": "log_101",
+      "timestamp": "2026-08-24T09:30:34.904Z",
+      "username": "sarah_k",
+      "commentId": "1790123456789",
+      "commentText": "ممكن أعرف كم السعر مع الشحن؟",
+      "ruleMatched": "استفسار عن السعر",
+      "autoLikeStatus": "success",
+      "publicReplyText": "أهلاً بك! 🌸 تم إرسال جميع التفاصيل والسعر في الخاص 📩",
+      "publicReplyStatus": "success",
+      "dmStatus": "success",
+      "dmText": "أهلاً وسهلاً بك 🌸! سعر هذا المنتج 150 ريال شامل الضريبة 💸.",
+      "simulated": true
+    },
+    {
+      "id": "log_102",
+      "timestamp": "2026-08-24T08:57:34.905Z",
+      "username": "ahmed_store",
+      "commentId": "1790987654321",
+      "commentText": "هل التوصيل متوفر لجدة؟",
+      "ruleMatched": "استفسار عن الشحن والتوصيل",
+      "autoLikeStatus": "success",
+      "publicReplyText": "مرحباً! نوصل لجميع مناطق المملكة ودول الخليج 🚚 تم مراسلتك بالخاص!",
+      "publicReplyStatus": "success",
+      "dmStatus": "success",
+      "dmText": "مرحباً بك! 🚚 التوصيل داخل الرياض خلال 24 ساعة باقي المدن خلال 2-4 أيام عمل.",
+      "simulated": true
+    }
+  ],
+  "stats": {
+    "totalComments": 51,
+    "totalLikes": 46,
+    "totalPublicReplies": 46,
+    "totalDmsSent": 46
+  }
+}

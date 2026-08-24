@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام الرد الآلي لانستغرام | Instagram Auto-Reply Bot</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">📸</div>
+        <div>
+          <div class="brand-title">انستغرام بوت</div>
+          <div class="brand-subtitle">نظام الرد والرسائل الفورية</div>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item active" data-tab="tab-dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          الرئيسية والتحليلات
+        </li>
+        <li class="nav-item" data-tab="tab-rules">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          قواعد الرد التلقائي
+        </li>
+        <li class="nav-item" data-tab="tab-simulator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          المحاكي التفاعلي الحي
+        </li>
+        <li class="nav-item" data-tab="tab-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          إعدادات Meta & API
+        </li>
+      </ul>
+
+      <div class="sidebar-status">
+        <div class="status-indicator">
+          <span class="dot"></span>
+          <span>السيرفر متصل ويعمل</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- TAB 1: DASHBOARD -->
+      <section id="tab-dashboard" class="tab-section active">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">لوحة التحكم والتحليلات</h1>
+            <p class="page-description">مراقبة الردود الآلية والنشاط الحي عبر حسابك في انستغرام</p>
+          </div>
+          <button class="btn btn-primary" onclick="switchTab('tab-simulator')">✨ تجربة المحاكي الحي</button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">💬</div>
+            <div>
+              <div class="stat-value" id="stat-comments">0</div>
+              <div class="stat-label">إجمالي التعليقات المعالجة</div>
+            </div>
+          </div>
+
+          <div class="stat-card likes">
+            <div class="stat-icon">❤️</div>
+            <div>
+              <div class="stat-value" id="stat-likes">0</div>
+              <div class="stat-label">الإعجابات التلقائية</div>
+            </div>
+          </div>
+
+          <div class="stat-card replies">
+            <div class="stat-icon">↩️</div>
+            <div>
+              <div class="stat-value" id="stat-replies">0</div>
+              <div class="stat-label">الردود العامة المنشورة</div>
+            </div>
+          </div>
+
+          <div class="stat-card dms">
+            <div class="stat-icon">📩</div>
+            <div>
+              <div class="stat-value" id="stat-dms">0</div>
+              <div class="stat-label">الرسائل الخاصة المرسلة (DM)</div>
+            </div>
+          </div>
+
+          <div class="stat-card rules">
+            <div class="stat-icon">⚡</div>
+            <div>
+              <div class="stat-value" id="stat-active-rules">0</div>
+              <div class="stat-label">القواعد النشطة</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="card">
+          <h3>📊 إحصائيات الكلمات المفتاحية الأكثر تكراراً</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px;">معدل استجابة النظام للكلمات المفتاحية المطلوبة من المتابعين</p>
+          <div style="height: 260px; position: relative;">
+            <canvas id="keywordsChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Activity Logs -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3>📋 سجل الأنشطة والتعليقات الأخير</h3>
+            <button class="btn btn-secondary" onclick="fetchLogs()">🔄 تحديث السجل</button>
+          </div>
+          <table class="rules-table">
+            <thead>
+              <tr>
+                <th>المستخدم</th>
+                <th>نص التعليق</th>
+                <th>القاعدة المطابقة</th>
+                <th>إعجاب</th>
+                <th>رد عام</th>
+                <th>رسالة خاصة (DM)</th>
+                <th>الوقت</th>
+              </tr>
+            </thead>
+            <tbody id="logs-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 2: RULES MANAGEMENT -->
+      <section id="tab-rules" class="tab-section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">قواعد الرد التلقائي وتخصيص المنشورات والريلز</h1>
+            <p class="page-description">إدارة الكلمات المفتاحية، الرد الثابت العام، الردود المخصصة لكل منشور أو ريلز، والإعجاب فقط</p>
+          </div>
+          <button class="btn btn-primary" onclick="openRuleModal()">➕ إضافة قاعدة جديدة</button>
+        </div>
+
+        <div class="card">
+          <table class="rules-table">
+            <thead>
+              <tr>
+                <th>الحالة</th>
+                <th>اسم القاعدة والنطاق</th>
+                <th>الكلمات المفتاحية</th>
+                <th>نوع الإجراء</th>
+                <th>إعجاب تلقائي</th>
+                <th>نموذج الرد العام</th>
+                <th>الرسالة الخاصة (DM)</th>
+                <th>الإجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="rules-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: LIVE SIMULATOR -->
+      <section id="tab-simulator" class="tab-section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">المحاكي التفاعلي الحي (Sandbox)</h1>
+            <p class="page-description">جرب الرد العام الثابت، الإعجاب فقط، أو الرد المخصص لمنشور/ريلز محدد مباشرة أمامك!</p>
+          </div>
+        </div>
+
+        <div class="simulator-container">
+          <!-- Phone Instagram Mockup -->
+          <div class="phone-mockup">
+            <div class="ig-post-card">
+              <div class="ig-header">
+                <div class="ig-avatar">
+                  <div style="width:100%;height:100%;border-radius:50%;background:#e1306c;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;">IG</div>
+                </div>
+                <div style="flex:1;">
+                  <div class="ig-username">my_brand_store</div>
+                  <div style="font-size:0.75rem; color:#8e8e8e;" id="sim-post-type-label">منشور عام (General Post)</div>
+                </div>
+                <!-- Post Selector -->
+                <select id="sim-post-selector" class="form-control" style="width:auto; font-size:0.75rem; padding:4px 8px;" onchange="changeSimulatedPost(this.value)">
+                  <option value="">منشور عام</option>
+                  <option value="reel_101">🎬 ريلز العروض (Reel #101)</option>
+                </select>
+              </div>
+
+              <!-- Mock Post Image -->
+              <img id="sim-post-img" class="ig-post-img" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80" alt="Product Post">
+
+              <div class="ig-actions">
+                <span>❤️</span> <span>💬</span> <span>✈️</span>
+              </div>
+
+              <div style="padding: 0 14px 10px 14px; font-size: 0.85rem;" id="sim-post-caption">
+                <b>my_brand_store</b> العرض الخاص لفترة محدودة ✨ اترك تعليقاً بسعر أو تفاصيل ليصلك الخصم فوراً 🎁!
+              </div>
+
+              <!-- Comments Container -->
+              <div class="ig-comments-list" id="sim-comments-list">
+                <!-- Dynamic simulator comments -->
+              </div>
+
+              <!-- Comment Input Form -->
+              <div style="display:flex; gap:8px; padding: 10px; border-top: 1px solid #262626; background:#000;">
+                <input type="text" id="sim-input-username" class="form-control" placeholder="اسمك" value="ahmed_vip" style="width: 30%; font-size:0.8rem;">
+                <input type="text" id="sim-input-text" class="form-control" placeholder="اكتب تعليقك هنا..." style="flex:1; font-size:0.8rem;">
+                <button class="btn btn-primary" style="padding: 6px 14px; font-size:0.8rem;" onclick="runSimulation()">إرسال</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- DM Inbox Preview -->
+          <div class="dm-inbox-mockup">
+            <div class="dm-header">
+              <div style="width:36px; height:36px; border-radius:50%; background: var(--primary-gradient); display:flex; align-items:center; justify-content:center; font-size:18px;">📩</div>
+              <div>
+                <div style="font-weight:600; font-size:0.95rem;">صندوق الرسائل الخاصة (Direct Inbox)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted);" id="sim-dm-status">في انتظار تعليق محاكي...</div>
+              </div>
+            </div>
+
+            <div class="dm-messages" id="sim-dm-messages">
+              <div style="text-align:center; color:var(--text-muted); margin-top:80px; font-size:0.9rem;">
+                اكتب تعليقاً في المنشور المحاكي على اليسار واضغط إرسال لتشاهد الرسالة الخاصة الفورية هنا! 🚀
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: META API SETTINGS & GUIDE -->
+      <section id="tab-settings" class="tab-section">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">إعدادات Meta Graph API والدليل الشامل</h1>
+            <p class="page-description">ربط حساب انستغرام التجاري الرسمي وضبط معايير الأمان والـ Webhook</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🔑 بيانات الاعتماد والـ Tokens</h3>
+          <form id="settings-form" style="margin-top: 16px;">
+            <div class="form-group">
+              <label>Instagram Business Account ID (معرف حساب انستغرام)</label>
+              <input type="text" id="setting-ig-id" class="form-control" placeholder="مثال: 17841413935836206">
+            </div>
+
+            <div class="form-group">
+              <label>Page Access Token (رمز الوصول الممتد للملاحظة والتفاعل)</label>
+              <input type="password" id="setting-page-token" class="form-control" placeholder="EAAG...">
+            </div>
+
+            <div class="form-group">
+              <label>Webhook Verify Token (رمز التحقق الخاص بالويب هوك)</label>
+              <input type="text" id="setting-verify-token" class="form-control" placeholder="my_custom_secret_verify_token_123">
+            </div>
+
+            <div style="display:flex; gap: 20px; align-items:center; margin-top: 20px;">
+              <label class="switch">
+                <input type="checkbox" id="setting-autolike">
+                <span class="slider"></span>
+              </label>
+              <span>تفعيل الإعجاب التلقائي بالتعليقات (Auto-Like)</span>
+            </div>
+
+            <button type="button" class="btn btn-primary" style="margin-top: 24px;" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+          </form>
+        </div>
+
+        <!-- Meta Developer Setup Guide -->
+        <div class="card" style="background: rgba(13, 17, 23, 0.9);">
+          <h3>📖 خطوات ربط النظام بحساب انستغرام عبر Meta (خطوة بخطوة)</h3>
+          <ol style="margin-right: 20px; margin-top: 14px; display:flex; flex-direction:column; gap:12px; font-size:0.95rem;">
+            <li><b>إنشاء تطبيق في Meta for Developers</b>: توجه إلى <a href="https://developers.facebook.com/" target="_blank" style="color:var(--accent-cyan);">developers.facebook.com</a> وقم بإنشاء تطبيق جديد من نوع <i>Business</i>.</li>
+            <li><b>ربط حساب انستغرام التجاري</b>: تأكد من تحويل حساب انستغرام إلى <i>Instagram Business/Creator</i> وربطه بصفحة فيسبوك.</li>
+            <li><b>إضافة منتج Instagram Graph API & Messenger</b>: أضف صلاحية <code>instagram_manage_comments</code> و <code>instagram_manage_messages</code> للتطبيق.</li>
+            <li><b>ضبط الـ Webhook</b>: في إعدادات Webhook اختر <i>Instagram</i> وضغ الرابط الخاص بسيرفرك:
+              <br><code style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:4px; font-family:monospace; color:var(--primary-pink);">http://YOUR-DOMAIN.com/api/webhook</code>
+              مع توكن التحقق المحدد أعلاه.
+            </li>
+            <li><b>تفعيل الاشتراك بالحقول</b>: اشترك في حقل <code>comments</code> و <code>mentions</code> لاستلام الإشعارات لحظياً.</li>
+          </ol>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- RULE MODAL -->
+  <div class="modal-overlay" id="rule-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">إضافة قاعدة رد آلي جديدة</h3>
+        <button class="close-btn" onclick="closeRuleModal()">&times;</button>
+      </div>
+
+      <form id="rule-form">
+        <input type="hidden" id="rule-id">
+        
+        <div class="form-group">
+          <label>اسم القاعدة المرجعي</label>
+          <input type="text" id="rule-name" class="form-control" placeholder="مثال: رد عام ثابث لكل التعليقات أو رد خاص بريلز العروض" required>
+        </div>
+
+        <div class="form-group">
+          <label>نطاق الاستهداف (جميع المنشورات أم منشور/ريلز محدد)</label>
+          <select id="rule-target-post-id" class="form-control">
+            <option value="">🌐 جميع المنشورات والريلز (General)</option>
+            <option value="reel_101">🎬 منشور/ريلز محدد فقط (أدخل ID أو الكود)</option>
+          </select>
+          <input type="text" id="rule-custom-post-id" class="form-control" placeholder="أدخل ID أو رابط المنشور/الريلز المحدد (مثل: reel_101 أو 179912345)" style="margin-top:8px; display:none;">
+        </div>
+
+        <div class="form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <label>الكلمات المفتاحية (مفصولة بفواصل ,)</label>
+            <button type="button" class="btn btn-secondary" style="padding:2px 8px; font-size:0.75rem;" onclick="setWildcardKeyword()">🌟 جعلها رد ثابت لكافة التعليقات (*)</button>
+          </div>
+          <input type="text" id="rule-keywords" class="form-control" placeholder="مثال: سعر, بكم, عروض (أو اكتب * للرد الثابت على أي تعليق)" required>
+        </div>
+
+        <div class="form-group">
+          <label>نوع الإجراء المطلوب (Action Type)</label>
+          <select id="rule-action-type" class="form-control">
+            <option value="all">🚀 رد كامل (إعجاب + رد عام + رسالة خاصة DM)</option>
+            <option value="like_only">❤️ إعجاب فقط بالتعليق (Like Only)</option>
+            <option value="comment_only">💬 رد عام فقط تحت التعليق (Public Comment Only)</option>
+            <option value="dm_only">📩 رسالة خاصة فقط (Private DM Only)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="display:flex; align-items:center; gap:12px;">
+          <label class="switch">
+            <input type="checkbox" id="rule-autolike" checked>
+            <span class="slider"></span>
+          </label>
+          <span>تفعيل الإعجاب التلقائي بالتعليق (Auto-Like)</span>
+        </div>
+
+        <div class="form-group" id="group-public-replies">
+          <label>الردود العامة على التعليق (رد واحد في كل سطر للتنويع العشوائي)</label>
+          <textarea id="rule-public-replies" class="form-control" placeholder="أهلاً بك! تم إرسال كافة التفاصيل بالخاص 📩&#10;مرحباً عزيزي! أرسلنا لك الكوبون في الرسائل الخاصة 📥"></textarea>
+        </div>
+
+        <div class="form-group" id="group-dm-text">
+          <label>نص الرسالة الخاصة (Direct DM Text)</label>
+          <textarea id="rule-dm-text" class="form-control" placeholder="أهلاً وسهلاً بك 🌸! إليك كود الخصم الخاص بك: OFFER20 🎁..."></textarea>
+        </div>
+
+        <div class="form-group" id="group-dm-btn">
+          <label>عنوان ورابط الزر في الرسالة الخاصة (اختياري)</label>
+          <div style="display:flex; gap:10px;">
+            <input type="text" id="rule-dm-button-text" class="form-control" placeholder="🛒 رابط الطلب المباشر">
+            <input type="url" id="rule-dm-button-url" class="form-control" placeholder="https://yourstore.com">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+          <button type="button" class="btn btn-secondary" onclick="closeRuleModal()">إلغاء</button>
+          <button type="submit" class="btn btn-primary">حفظ القاعدة</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+  <script src="js/simulator.js"></script>
+</body>
+</html>
